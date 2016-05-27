@@ -37,6 +37,14 @@ public class clsJetDatabase
         return cmd.ExecuteReader();
     }
 
+    public object ExecuteScalar(string sqlQuery)
+    {
+        OleDbCommand cmd = new OleDbCommand();
+        cmd.Connection = mDBConn;
+        cmd.CommandText = sqlQuery;
+        return cmd.ExecuteScalar();
+    }
+
     public string ToSql(string value)
     {
         return "'" + value.Replace("'", "''") + "'";

@@ -185,7 +185,15 @@ public partial class frmMain: Form
         
         List<clsTimeEntry> entryList = new List<clsTimeEntry>();
 
-        entryList = mTimeEntryListObject.GetAllEntries(beginDate, endDate);
+        try
+        {
+            entryList = mTimeEntryListObject.GetAllEntries(beginDate, endDate);
+        }
+        catch (Exception ex)
+        {
+            messageBoxOK(ex.Message);
+        }
+
         lvwMain.Items.Clear();
 
         foreach (clsTimeEntry entry in entryList)

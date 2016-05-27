@@ -42,6 +42,16 @@ public class clsTimeEntryList
 
         db.Open();
 
+        string countSql = "SELECT COUNT (*) FROM TimeLogEntries WHERE (DateWorked >= " 
+            + db.ToSql(beginDate) + ") AND (DateWorked <= " + db.ToSql(endDate) + ")";
+
+        int total_Records = (int)db.ExecuteScalar(countSql);
+
+        if (total_Records > 500)
+        {
+            throw new clsTooManyRecordsException("Over 500 records found.");
+        }
+
         string sql = "SELECT * FROM TimeLogEntries WHERE (DateWorked >= " + db.ToSql(beginDate)
                 + ") AND (DateWorked <= " + db.ToSql(endDate) + ")";
 

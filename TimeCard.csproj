@@ -109,6 +109,7 @@
     <Compile Include="clsJetQueryResults.cs" />
     <Compile Include="clsTimeEntry.cs" />
     <Compile Include="clsTimeEntryList.cs" />
+    <Compile Include="clsTooManyRecordsException.cs" />
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>

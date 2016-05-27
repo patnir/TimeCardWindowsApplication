@@ -36,13 +36,14 @@ public class clsTimeEntryList
         db.Close();
     }
 
-    public List<clsTimeEntry> GetAllEntries()
+    public List<clsTimeEntry> GetAllEntries(DateTime beginDate, DateTime endDate)
     {
         clsJetDatabase db = new clsJetDatabase(mConnectionString);
 
         db.Open();
 
-        string sql = "SELECT * FROM TimeLogEntries ORDER BY entryID";
+        string sql = "SELECT * FROM TimeLogEntries WHERE (DateWorked >= " + db.ToSql(beginDate)
+                + ") AND (DateWorked <= " + db.ToSql(endDate) + ")";
 
         clsJetQueryResults results = new clsJetQueryResults();
         results.Open(db, sql);

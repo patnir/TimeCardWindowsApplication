@@ -47,7 +47,7 @@ public class clsJetDatabase
     }
     public string ToSql(DateTime value)
     {
-        return "'" + value.ToString("yyyy-MM-dd HH:mm:ss") + "'";
+        return "#" + value.ToString("yyyy-MM-dd HH:mm:ss") + "#";
     }
     public string ToSql(bool value)
     {

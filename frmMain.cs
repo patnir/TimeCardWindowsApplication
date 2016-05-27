@@ -20,12 +20,16 @@ public partial class frmMain: Form
 
         btnAdd.Focus();
 
+        txtBeginDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+        txtEndDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+
         try
         {
-            mTimeEntryListObject.GetAllEntries();
-            txtBeginDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            mTimeEntryListObject.GetAllEntries(DateTime.Now, DateTime.Now);
 
+            txtBeginDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
             txtEndDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+
             refreshView();
         }
         catch (Exception ex)
@@ -147,9 +151,41 @@ public partial class frmMain: Form
     {
         float totalBillableHours = 0;
         float totalUnbillableHours = 0;
+
+        DateTime beginDate;
+
+        if (txtBeginDate.Text.Trim().Length == 0)
+        {
+            txtBeginDate.Text = DateTime.MinValue.ToString("MM/dd/yyyy");
+        }
+
+        bool conversion = DateTime.TryParse(txtBeginDate.Text, out beginDate);
+
+        if (conversion == false)
+        {
+            messageBoxOK("Enter an End Date that is greater than or equal to the Begin date");
+            return;
+        }
+
+        DateTime endDate;
+
+        if (txtEndDate.Text.Trim().Length == 0)
+        {
+            txtEndDate.Text = DateTime.MaxValue.ToString("MM/dd/yyyy");
+        }
+
+        conversion = DateTime.TryParse(txtEndDate.Text, out endDate);
+
+
+        if (conversion == false || DateTime.Compare(endDate.Date, beginDate.Date) < 0)
+        {
+            messageBoxOK("Enter a valid End Date that is greater than or equal to the Begin date");
+            return;
+        }
+        
         List<clsTimeEntry> entryList = new List<clsTimeEntry>();
 
-        entryList = mTimeEntryListObject.GetAllEntries();
+        entryList = mTimeEntryListObject.GetAllEntries(beginDate, endDate);
         lvwMain.Items.Clear();
 
         foreach (clsTimeEntry entry in entryList)

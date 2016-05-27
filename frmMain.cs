@@ -145,6 +145,11 @@ public partial class frmMain: Form
         refreshView();
     }
 
+    private void btnRefresh_Click(object sender, EventArgs e)
+    {
+        refreshView();
+    }
+
     private void refreshView()
     {
         float totalBillableHours = 0;

@@ -21,12 +21,14 @@
             this.lblTotalUnbillableHours = new System.Windows.Forms.Label();
             this.lblTotalBillableHours = new System.Windows.Forms.Label();
             this.lblTotalHours = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.pnlToolbar.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlToolbar
             // 
+            this.pnlToolbar.Controls.Add(this.btnRefresh);
             this.pnlToolbar.Controls.Add(this.btnAbout);
             this.pnlToolbar.Controls.Add(this.btnDelete);
             this.pnlToolbar.Controls.Add(this.btnUpdate);
@@ -158,6 +160,16 @@
             this.lblTotalHours.TabIndex = 0;
             this.lblTotalHours.Text = "lblTotalHours";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(329, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 8;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
@@ -196,4 +208,5 @@
     private System.Windows.Forms.Label lblTotalBillableHours;
     private System.Windows.Forms.Label lblTotalHours;
     private System.Windows.Forms.Label lblTotalUnbillableHours;
+    private System.Windows.Forms.Button btnRefresh;
 }

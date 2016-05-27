@@ -7,6 +7,7 @@
     {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlToolbar = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -21,9 +22,14 @@
             this.lblTotalUnbillableHours = new System.Windows.Forms.Label();
             this.lblTotalBillableHours = new System.Windows.Forms.Label();
             this.lblTotalHours = new System.Windows.Forms.Label();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.lblBeginDate = new System.Windows.Forms.Label();
+            this.lblEndDate = new System.Windows.Forms.Label();
+            this.txtBeginDate = new System.Windows.Forms.TextBox();
+            this.txtEndDate = new System.Windows.Forms.TextBox();
+            this.pnlDate = new System.Windows.Forms.Panel();
             this.pnlToolbar.SuspendLayout();
             this.pnlStatus.SuspendLayout();
+            this.pnlDate.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlToolbar
@@ -36,8 +42,18 @@
             this.pnlToolbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlToolbar.Location = new System.Drawing.Point(0, 0);
             this.pnlToolbar.Name = "pnlToolbar";
-            this.pnlToolbar.Size = new System.Drawing.Size(578, 30);
+            this.pnlToolbar.Size = new System.Drawing.Size(534, 30);
             this.pnlToolbar.TabIndex = 4;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(329, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 8;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnAbout
             // 
@@ -81,18 +97,19 @@
             // 
             // lvwMain
             // 
+            this.lvwMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvwMain.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.lvwMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvwMain.FullRowSelect = true;
             this.lvwMain.HideSelection = false;
-            this.lvwMain.Location = new System.Drawing.Point(0, 30);
+            this.lvwMain.Location = new System.Drawing.Point(0, 66);
             this.lvwMain.Name = "lvwMain";
-            this.lvwMain.Size = new System.Drawing.Size(578, 513);
+            this.lvwMain.Size = new System.Drawing.Size(534, 513);
             this.lvwMain.TabIndex = 5;
             this.lvwMain.UseCompatibleStateImageBehavior = false;
             this.lvwMain.View = System.Windows.Forms.View.Details;
@@ -128,9 +145,9 @@
             this.pnlStatus.Controls.Add(this.lblTotalBillableHours);
             this.pnlStatus.Controls.Add(this.lblTotalHours);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlStatus.Location = new System.Drawing.Point(0, 516);
+            this.pnlStatus.Location = new System.Drawing.Point(0, 449);
             this.pnlStatus.Name = "pnlStatus";
-            this.pnlStatus.Size = new System.Drawing.Size(578, 27);
+            this.pnlStatus.Size = new System.Drawing.Size(534, 27);
             this.pnlStatus.TabIndex = 9;
             // 
             // lblTotalUnbillableHours
@@ -160,20 +177,56 @@
             this.lblTotalHours.TabIndex = 0;
             this.lblTotalHours.Text = "lblTotalHours";
             // 
-            // btnRefresh
+            // lblBeginDate
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(329, 3);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 8;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.lblBeginDate.AutoSize = true;
+            this.lblBeginDate.Location = new System.Drawing.Point(12, 9);
+            this.lblBeginDate.Name = "lblBeginDate";
+            this.lblBeginDate.Size = new System.Drawing.Size(63, 13);
+            this.lblBeginDate.TabIndex = 10;
+            this.lblBeginDate.Text = "Begin Date:";
+            // 
+            // lblEndDate
+            // 
+            this.lblEndDate.AutoSize = true;
+            this.lblEndDate.Location = new System.Drawing.Point(254, 9);
+            this.lblEndDate.Name = "lblEndDate";
+            this.lblEndDate.Size = new System.Drawing.Size(55, 13);
+            this.lblEndDate.TabIndex = 11;
+            this.lblEndDate.Text = "End Date:";
+            // 
+            // txtBeginDate
+            // 
+            this.txtBeginDate.Location = new System.Drawing.Point(86, 6);
+            this.txtBeginDate.Name = "txtBeginDate";
+            this.txtBeginDate.Size = new System.Drawing.Size(100, 20);
+            this.txtBeginDate.TabIndex = 12;
+            // 
+            // txtEndDate
+            // 
+            this.txtEndDate.Location = new System.Drawing.Point(329, 6);
+            this.txtEndDate.Name = "txtEndDate";
+            this.txtEndDate.Size = new System.Drawing.Size(100, 20);
+            this.txtEndDate.TabIndex = 13;
+            // 
+            // pnlDate
+            // 
+            this.pnlDate.Controls.Add(this.lblBeginDate);
+            this.pnlDate.Controls.Add(this.txtEndDate);
+            this.pnlDate.Controls.Add(this.txtBeginDate);
+            this.pnlDate.Controls.Add(this.lblEndDate);
+            this.pnlDate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlDate.Location = new System.Drawing.Point(0, 30);
+            this.pnlDate.Name = "pnlDate";
+            this.pnlDate.Size = new System.Drawing.Size(534, 30);
+            this.pnlDate.TabIndex = 14;
             // 
             // frmMain
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(578, 543);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(534, 476);
+            this.Controls.Add(this.pnlDate);
             this.Controls.Add(this.pnlStatus);
             this.Controls.Add(this.lvwMain);
             this.Controls.Add(this.pnlToolbar);
@@ -181,12 +234,13 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
-            this.Tag = "Fall2011";
-            this.Text = "CIT 450 TimeCard";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.Tag = "";
+            this.Text = "TimeCard";
             this.pnlToolbar.ResumeLayout(false);
             this.pnlStatus.ResumeLayout(false);
             this.pnlStatus.PerformLayout();
+            this.pnlDate.ResumeLayout(false);
+            this.pnlDate.PerformLayout();
             this.ResumeLayout(false);
 
     }
@@ -209,4 +263,9 @@
     private System.Windows.Forms.Label lblTotalHours;
     private System.Windows.Forms.Label lblTotalUnbillableHours;
     private System.Windows.Forms.Button btnRefresh;
+    private System.Windows.Forms.Label lblBeginDate;
+    private System.Windows.Forms.Label lblEndDate;
+    private System.Windows.Forms.TextBox txtBeginDate;
+    private System.Windows.Forms.TextBox txtEndDate;
+    private System.Windows.Forms.Panel pnlDate;
 }

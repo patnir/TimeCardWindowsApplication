@@ -18,27 +18,20 @@ public partial class frmMain: Form
     {
         InitializeComponent();
 
+        btnAdd.Focus();
+
         try
         {
             mTimeEntryListObject.GetAllEntries();
+            txtBeginDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+
+            txtEndDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
             refreshView();
         }
         catch (Exception ex)
         {
             msgException(ex);
         } 
-    }
-
-    private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        /*try
-        {
-            mTimeEntryListObject.SaveList();
-        }
-        catch (Exception ex)
-        {
-            msgException(ex);
-        }*/
     }
 
     private void btnAdd_Click(object sender, EventArgs e)

@@ -7,7 +7,7 @@ using System.Data.OleDb;
 public class clsTimeEntryList
 {
     private string mConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" 
-        + Path.Combine(Application.StartupPath, "TimeCard - 5000.accdb");
+        + Path.Combine(Application.StartupPath, "TimeCard.accdb");
 
     public void AddEntry(clsTimeEntry entryToAdd)
     {

@@ -5,8 +5,9 @@ public class clsJetDatabase
 {
     private OleDbConnection mDBConn = null;
 
-    public clsJetDatabase(string connectionString)
+    public clsJetDatabase(string fullFileName)
     {
+        string connectionString = getConnectionString(fullFileName);
         mDBConn = new OleDbConnection();
         mDBConn.ConnectionString = connectionString;
     }
@@ -43,6 +44,14 @@ public class clsJetDatabase
         cmd.Connection = mDBConn;
         cmd.CommandText = sqlQuery;
         return cmd.ExecuteScalar();
+    }
+
+    // Moved connection string here to accomodate different databases
+
+    private string getConnectionString(string fullFileName)
+    {
+        string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fullFileName;
+        return connectionString;
     }
 
     public string ToSql(string value)

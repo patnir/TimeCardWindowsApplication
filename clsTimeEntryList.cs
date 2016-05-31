@@ -6,12 +6,11 @@ using System.Data.OleDb;
 
 public class clsTimeEntryList
 {
-    private string mConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" 
-        + Path.Combine(Application.StartupPath, "TimeCard.accdb");
+    private string mFullFileName = Path.Combine(Application.StartupPath, "TimeCard.accdb");
 
     public void AddEntry(clsTimeEntry entryToAdd)
     {
-        clsJetDatabase db = new clsJetDatabase(mConnectionString);
+        clsJetDatabase db = new clsJetDatabase(mFullFileName);
 
         db.Open();
         entryToAdd.Insert(db);
@@ -20,7 +19,7 @@ public class clsTimeEntryList
 
     public void UpdateEntry(clsTimeEntry updatedEntry)
     {
-        clsJetDatabase db = new clsJetDatabase(mConnectionString);
+        clsJetDatabase db = new clsJetDatabase(mFullFileName);
 
         db.Open();
         updatedEntry.Update(db);
@@ -29,7 +28,7 @@ public class clsTimeEntryList
 
     public void DeleteEntry(clsTimeEntry entryToDelete)
     {
-        clsJetDatabase db = new clsJetDatabase(mConnectionString);
+        clsJetDatabase db = new clsJetDatabase(mFullFileName);
 
         db.Open();
         entryToDelete.Delete(db);
@@ -38,7 +37,7 @@ public class clsTimeEntryList
 
     public List<clsTimeEntry> GetAllEntries(DateTime beginDate, DateTime endDate)
     {
-        clsJetDatabase db = new clsJetDatabase(mConnectionString);
+        clsJetDatabase db = new clsJetDatabase(mFullFileName);
 
         db.Open();
 
@@ -53,7 +52,8 @@ public class clsTimeEntryList
         }
 
         string sql = "SELECT * FROM TimeLogEntries WHERE (DateWorked >= " + db.ToSql(beginDate)
-                + ") AND (DateWorked <= " + db.ToSql(endDate) + ")";
+                + ") AND (DateWorked <= " + db.ToSql(endDate) + ")"
+                + " ORDER BY DateWorked DESC, EmployeeID ASC, HoursWorked ASC";
 
         clsJetQueryResults results = new clsJetQueryResults();
         results.Open(db, sql);

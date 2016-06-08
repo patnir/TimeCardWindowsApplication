@@ -33,3 +33,9 @@ C:\Users\SUNITA\Documents\Visual Studio 2013\Projects\CIT450\Lab45\Rahul-clone\E
 C:\Users\SUNITA\Documents\Visual Studio 2013\Projects\CIT450\Lab45\Rahul-clone\BootCamp\EntityFramework\TimeCardWinUI\bin\Debug\TimeCardWinUI.exe.config
 C:\Users\SUNITA\Documents\Visual Studio 2013\Projects\CIT450\Lab45\Rahul-clone\BootCamp\EntityFramework\TimeCardWinUI\obj\Debug\TimeCardWinUI.exe
 C:\Users\SUNITA\Documents\Visual Studio 2013\Projects\CIT450\Lab45\Rahul-clone\BootCamp\EntityFramework\TimeCardWinUI\obj\Debug\TimeCardWinUI.pdb
+C:\Users\SUNITA\Documents\Visual Studio 2013\Projects\CIT450\Lab 01 Non-OOP Solution\TimeCardProject\EntityFramework\TimeCardWinUI\bin\Debug\TimeCardWinUI.exe.config
+C:\Users\SUNITA\Documents\Visual Studio 2013\Projects\CIT450\Lab 01 Non-OOP Solution\TimeCardProject\EntityFramework\TimeCardWinUI\obj\Debug\TimeCardWinUI.exe
+C:\Users\SUNITA\Documents\Visual Studio 2013\Projects\CIT450\Lab 01 Non-OOP Solution\TimeCardProject\EntityFramework\TimeCardWinUI\obj\Debug\TimeCardWinUI.pdb
+C:\Users\SUNITA\Documents\Visual Studio 2013\Projects\AdvancedBootCamp\Rahul\Bootcamp\Non-OOP Solution\TimeCardProject\EntityFramework\TimeCardWinUI\bin\Debug\TimeCardWinUI.exe.config
+C:\Users\SUNITA\Documents\Visual Studio 2013\Projects\AdvancedBootCamp\Rahul\Bootcamp\Non-OOP Solution\TimeCardProject\EntityFramework\TimeCardWinUI\obj\Debug\TimeCardWinUI.exe
+C:\Users\SUNITA\Documents\Visual Studio 2013\Projects\AdvancedBootCamp\Rahul\Bootcamp\Non-OOP Solution\TimeCardProject\EntityFramework\TimeCardWinUI\obj\Debug\TimeCardWinUI.pdb
